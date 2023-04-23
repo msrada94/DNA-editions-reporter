@@ -1,6 +1,9 @@
-fun main() {
+import services.DNAEditionsReporter
+import java.io.File
 
-    FileUtils.readLines("seq.tsv").forEach { _ ->
-        println("hola")
-    }
+fun main() {
+    val file = File("seq.tsv")
+    val report = DNAEditionsReporter.readTSVFile(file)
+
+    print(report)
 }

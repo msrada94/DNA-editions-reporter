@@ -1,13 +1,15 @@
-import ADNEdition.DELETION
-import ADNEdition.INSERTION
-import ADNEdition.MUTATION
-import ADNEdition.NO_EDITION
-import ADNEditionChecker.checkEdition
+package utils
+
+import model.DNAEdition.DELETION
+import model.DNAEdition.INSERTION
+import model.DNAEdition.MUTATION
+import model.DNAEdition.NO_EDITION
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
-class ADNEditionTest {
+class EditionCheckerTest {
+    val testInstance = EditionChecker
 
     @Nested
     inner class NoEdition {
@@ -16,7 +18,7 @@ class ADNEditionTest {
             val initialSeq = "AAATTTGGG"
             val finalSeq = "AAATTTGGG"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(NO_EDITION)
         }
@@ -26,7 +28,17 @@ class ADNEditionTest {
             val initialSeq = "AAATTCCC"
             val finalSeq = "AAAGGCCC"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
+
+            assertThat(result).isEqualTo(NO_EDITION)
+        }
+
+        @Test
+        fun `no edition because is not subsequence`() {
+            val initialSeq = "ATCCTG"
+            val finalSeq = "CTGC"
+
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(NO_EDITION)
         }
@@ -39,7 +51,7 @@ class ADNEditionTest {
             val initialSeq = "AAACTTT"
             val finalSeq = "AAATTT"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(DELETION)
         }
@@ -49,9 +61,19 @@ class ADNEditionTest {
             val initialSeq = "AAACCTTGT"
             val finalSeq = "AAATTT"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(DELETION)
+        }
+
+        @Test
+        fun `not deletion because is not subsequence`() {
+            val initialSeq = "AAACCCTTT"
+            val finalSeq = "AAACCCG"
+
+            val result = testInstance.check(initialSeq, finalSeq)
+
+            assertThat(result).isEqualTo(NO_EDITION)
         }
     }
 
@@ -62,7 +84,7 @@ class ADNEditionTest {
             val initialSeq = "AAACCC"
             val finalSeq = "AAATCCC"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(INSERTION)
         }
@@ -72,9 +94,19 @@ class ADNEditionTest {
             val initialSeq = "AAATTT"
             val finalSeq = "AAACCTTGT"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(INSERTION)
+        }
+
+        @Test
+        fun `not insertion because is not subsequence`() {
+            val initialSeq = "AAATTT"
+            val finalSeq = "AAAGGGCCC"
+
+            val result = testInstance.check(initialSeq, finalSeq)
+
+            assertThat(result).isEqualTo(NO_EDITION)
         }
     }
 
@@ -85,7 +117,7 @@ class ADNEditionTest {
             val initialSeq = "AAATCCC"
             val finalSeq = "AAAGCCC"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(MUTATION)
         }
@@ -95,7 +127,7 @@ class ADNEditionTest {
             val initialSeq = "AATCCGCC"
             val finalSeq = "AAGCCTCC"
 
-            val result = checkEdition(initialSeq, finalSeq)
+            val result = testInstance.check(initialSeq, finalSeq)
 
             assertThat(result).isEqualTo(NO_EDITION)
         }

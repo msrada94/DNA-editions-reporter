@@ -1,10 +1,13 @@
-import ADNEdition.DELETION
-import ADNEdition.INSERTION
-import ADNEdition.MUTATION
-import ADNEdition.NO_EDITION
+package utils
 
-object ADNEditionChecker {
-    fun checkEdition(initialSeq: String, finalSeq: String): ADNEdition {
+import model.DNAEdition
+import model.DNAEdition.DELETION
+import model.DNAEdition.INSERTION
+import model.DNAEdition.MUTATION
+import model.DNAEdition.NO_EDITION
+
+object EditionChecker {
+    fun check(initialSeq: String, finalSeq: String): DNAEdition {
         val lengthInitial = initialSeq.length
         val lengthFinal = finalSeq.length
 
