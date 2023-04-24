@@ -1,5 +1,7 @@
 package services
 
+import model.DNAEditionsReport
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -10,6 +12,13 @@ class DNAEditionsReporterTest {
     fun `report editions from well-formatted file`() {
         val result = testInstance.readTSVFile(File("seq.tsv"))
 
-        println(result)
+        assertThat(result).isEqualTo(
+            DNAEditionsReport(
+                totalDNAEditionRequestChecked = 8,
+                totalDeletions = 2,
+                totalInsertions = 1,
+                totalMutations = 2
+            )
+        )
     }
 }

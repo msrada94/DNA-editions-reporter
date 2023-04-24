@@ -16,7 +16,7 @@ class EditionsCounterTest {
 
         val result = testInstance.count(editions)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(0)
         assertThat(result.totalInsertions).isEqualTo(0)
         assertThat(result.totalMutations).isEqualTo(0)
@@ -28,7 +28,7 @@ class EditionsCounterTest {
 
         val result = testInstance.count(editions)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(2)
         assertThat(result.totalInsertions).isEqualTo(0)
         assertThat(result.totalMutations).isEqualTo(0)
@@ -40,7 +40,7 @@ class EditionsCounterTest {
 
         val result = testInstance.count(editions)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(0)
         assertThat(result.totalInsertions).isEqualTo(2)
         assertThat(result.totalMutations).isEqualTo(0)
@@ -52,7 +52,7 @@ class EditionsCounterTest {
 
         val result = testInstance.count(editions)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(0)
         assertThat(result.totalInsertions).isEqualTo(0)
         assertThat(result.totalMutations).isEqualTo(2)
@@ -64,7 +64,7 @@ class EditionsCounterTest {
 
         val result = testInstance.count(editions)
 
-        assertThat(result.totalChecks).isEqualTo(7)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(7)
         assertThat(result.totalDeletions).isEqualTo(1)
         assertThat(result.totalInsertions).isEqualTo(2)
         assertThat(result.totalMutations).isEqualTo(3)

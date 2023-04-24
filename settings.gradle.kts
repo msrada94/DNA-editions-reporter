@@ -1,1 +1,1 @@
-rootProject.name = "DNA-sequence-edition"
+rootProject.name = "DNA-editions-reporter"

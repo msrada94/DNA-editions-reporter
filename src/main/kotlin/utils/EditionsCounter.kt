@@ -16,7 +16,7 @@ object EditionsCounter {
     }
 
     private fun updateReport(edition: DNAEdition, report: DNAEditionsReport) {
-        report.totalChecks += 1
+        report.totalDNAEditionRequestChecked += 1
         when (edition) {
             DELETION -> report.totalDeletions += 1
             INSERTION -> report.totalInsertions += 1

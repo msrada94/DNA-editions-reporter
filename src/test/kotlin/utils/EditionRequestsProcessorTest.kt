@@ -16,7 +16,7 @@ class EditionRequestsProcessorTest {
 
         val result = testInstance.process(sequence)
 
-        assertThat(result.totalChecks).isEqualTo(2)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(2)
         assertThat(result.totalDeletions).isEqualTo(0)
         assertThat(result.totalInsertions).isEqualTo(0)
         assertThat(result.totalMutations).isEqualTo(0)
@@ -32,7 +32,7 @@ class EditionRequestsProcessorTest {
 
         val result = testInstance.process(sequence)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(2)
         assertThat(result.totalInsertions).isEqualTo(0)
         assertThat(result.totalMutations).isEqualTo(0)
@@ -48,7 +48,7 @@ class EditionRequestsProcessorTest {
 
         val result = testInstance.process(sequence)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(0)
         assertThat(result.totalInsertions).isEqualTo(2)
         assertThat(result.totalMutations).isEqualTo(0)
@@ -64,7 +64,7 @@ class EditionRequestsProcessorTest {
 
         val result = testInstance.process(sequence)
 
-        assertThat(result.totalChecks).isEqualTo(3)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(3)
         assertThat(result.totalDeletions).isEqualTo(0)
         assertThat(result.totalInsertions).isEqualTo(0)
         assertThat(result.totalMutations).isEqualTo(2)
@@ -81,7 +81,7 @@ class EditionRequestsProcessorTest {
 
         val result = testInstance.process(sequence)
 
-        assertThat(result.totalChecks).isEqualTo(4)
+        assertThat(result.totalDNAEditionRequestChecked).isEqualTo(4)
         assertThat(result.totalDeletions).isEqualTo(1)
         assertThat(result.totalInsertions).isEqualTo(1)
         assertThat(result.totalMutations).isEqualTo(1)
