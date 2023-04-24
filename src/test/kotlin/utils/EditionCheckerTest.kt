@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class EditionCheckerTest {
-    val testInstance = EditionChecker
+    private val testInstance = EditionChecker
 
     @Nested
     inner class NoEdition {

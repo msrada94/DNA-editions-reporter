@@ -11,6 +11,7 @@ import java.nio.file.Files
 
 class TSVFileReaderTest {
     private val tempFile = Files.createTempDirectory("tempFolder").toFile()
+    private val testInstance = TSVFileReader
 
     @Test
     fun `read lines from tsv file`() {
@@ -23,7 +24,7 @@ class TSVFileReaderTest {
             close()
         }
 
-        val result = TSVFileReader.getCheckingRequests(file)
+        val result = testInstance.getCheckingRequests(file)
 
         val resultIterator = result.iterator()
         assertThat(resultIterator.next()).isEqualTo(DNAEditionCheckRequest(1, "initSeq1", "finalSeq1"))
@@ -43,7 +44,7 @@ class TSVFileReaderTest {
         }
 
         assertThatExceptionOfType(FileFormatException::class.java)
-            .isThrownBy { TSVFileReader.getCheckingRequests(file) }
+            .isThrownBy { testInstance.getCheckingRequests(file) }
             .withMessage("the file bad-formatted.xml does not have .tsv format")
     }
 
@@ -58,7 +59,7 @@ class TSVFileReaderTest {
         }
 
         assertThatExceptionOfType(BadFormattedLineException::class.java)
-            .isThrownBy { TSVFileReader.getCheckingRequests(file) }
+            .isThrownBy { testInstance.getCheckingRequests(file) }
             .withMessage("The line \"$badColumnNames\" is not well-formatted")
     }
 }
